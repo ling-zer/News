@@ -1,6 +1,0 @@
-
-.box {
-		width: 375rpx;
-		height: 375rpx;
-		background-color: red;
-}
