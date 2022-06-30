@@ -1,4 +1,4 @@
-node_modules
-uni_modules
+/node_modules
+/uni_modules
 .hbuilderx
-unpackage
+/unpackage
