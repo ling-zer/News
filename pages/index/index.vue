@@ -1,31 +1,47 @@
 <template>
-	<view class="box">
-		box
+	<view class="home-container">
+		<NavBar></NavBar>
+		<TabBar :labelList="labelList" :activeIndex="activeIndex" @changeActiveIndex="changeActiveIndex"></TabBar>
+		<!-- 文章列表 -->
+		<ArticleList @changeActiveIndex="changeActiveIndex" :labelList="labelList" class="list-container" :activeIndex="activeIndex"></ArticleList>
 	</view>
 </template>
 
 <script>
+	import {getLabelList} from "../../ajax/api/home.js"
 	export default {
+		onLoad() {
+			this._initLabellist();
+		},
 		data() {
 			return {
-				title: 'Hello'
+				labelList: [],
+				activeIndex: 0
 			}
 		},
-		onLoad() {
-
-		},
 		methods: {
-			getData() {
-				console.log(uni.$http);
+			async _initLabellist() {
+				const res = await getLabelList()
+				this.labelList = [{name: "全部"}, ...res];
+			},
+			async changeActiveIndex(index) {
+				this.activeIndex = index;
 			}
 		}
 	}
 </script>
 
-<style>
-	.box {
-		width: 375rpx;
-		height: 375rpx;
-		background-color: red;
+<style lang="scss" scoped>
+	.home-container {
+		// height: calc(100vh - var(--tab-bar-height) - env(safe-area-inset-bottom));
+		flex: 1;
+		overflow: auto;
+		box-sizing: border-box;
+		@include flex(flex-start, column);
+		align-items: inherit;
+	}
+	.list-container {
+		flex: 1;
+		box-sizing: border-box;
 	}
 </style>

@@ -14,4 +14,11 @@
 
 <style>
 	/*每个页面公共css */
+	page {
+/* 		height: initial;
+		overflow-y: initial;
+		min-height: 100vh; */
+		height: 100%;
+		display: flex;
+	}
 </style>

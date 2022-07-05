@@ -1,0 +1,7 @@
+{
+  "name": "getSearchData",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
