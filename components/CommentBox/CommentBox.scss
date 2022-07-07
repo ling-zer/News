@@ -1,0 +1,58 @@
+.comment-box {
+	margin: 30rpx 0;
+	.comment-header {
+		@include flex(flex-start);
+		align-items: flex-start;
+		.comment-logo {
+			flex-shrink: 0;
+			width: 60rpx;
+			height: 60rpx;
+			border-radius: 10rpx;
+			overflow: hidden;
+			image {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.comment-info {
+			@include flex(flex-start, column);
+			align-items: flex-start;
+			padding-left: 30rpx;
+			font-size: 24rpx;
+			color: $text-color;
+			line-height: 1;
+			.title {
+				font-size: 28rpx;
+				margin-bottom: 20rpx;
+				color: #333;
+				.reply-text {
+					color: #000;
+					margin: 0 20rpx;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.comment-content {
+		margin-top: 20rpx;
+		font-size: 28rpx;
+		color: #000;
+		.comment-btn-container {
+			margin-top: 30rpx;
+			display: flex;
+
+			.comment-btn {
+				padding: 4rpx 20rpx;
+				font-size: 24rpx;
+				color: $text-color;
+				border-radius: 40rpx;
+				border: 1px solid #ccc;
+			}
+		}
+		.comment-reply-list {
+			padding-left: 40rpx;
+			border-bottom: 1px solid $base-color;
+			transform: scale(.9);
+		}
+	}
+}

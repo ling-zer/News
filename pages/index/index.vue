@@ -9,24 +9,37 @@
 
 <script>
 	import {getLabelList} from "../../ajax/api/home.js"
+	import {mapMutations, mapState} from "vuex"
 	export default {
 		onLoad() {
 			this._initLabellist();
 		},
 		data() {
 			return {
-				labelList: [],
 				activeIndex: 0
+			}
+		},
+		computed: {
+			labelList() {
+				if(this.userInfo) {
+					this.activeIndex = 0;
+					return [...this.$store.state.labelList.slice(0, 1), 
+						...this.$store.state.labelList.filter(item => this.userInfo.label_ids.includes(item._id))]
+				} else {
+					return this.$store.state.labelList;
+				}
 			}
 		},
 		methods: {
 			async _initLabellist() {
+				if(this.labelList.length) return;
 				const res = await getLabelList()
-				this.labelList = [{name: "全部"}, ...res];
+				this.setLabelList([{name: "全部"}, ...res])
 			},
 			async changeActiveIndex(index) {
 				this.activeIndex = index;
-			}
+			},
+			...mapMutations(['setLabelList'])
 		}
 	}
 </script>

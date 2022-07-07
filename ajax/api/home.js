@@ -19,3 +19,24 @@ export const getSearchData = data => ajax({
 	name: "getSearchData",
 	data
 })
+
+export const updateLabelList = data => ajax({
+	name: "updateLabelList",
+	data
+})
+
+// 获取文章
+export const getArticleDetail = data => ajax({
+	name: "getArticleDetail",
+	data
+})
+
+export const updateComment = data => ajax({
+	name: "updateComment",
+	data
+})
+
+export const getCommentList = data => ajax({
+	name: "getCommentList",
+	data
+})

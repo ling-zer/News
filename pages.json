@@ -42,6 +42,33 @@
             }
             
         }
+        ,{
+            "path" : "pages/labelAdmin/labelAdmin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "标签管理",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/articleDetail/articleDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "文章详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/CommentList/CommentList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "评论列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

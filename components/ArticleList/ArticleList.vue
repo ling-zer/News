@@ -19,8 +19,14 @@
 		},
 		watch: {
 			labelList(newVal, oldVal) {
+				if(JSON.stringify(newVal) === JSON.stringify(oldVal)) return;
+				this.articleData = {};
+				this.loadData = {};
 				this._getArticleList(this.activeIndex)
 			}
+		},
+		created() {
+			this.labelList.length && this._getArticleList(this.activeIndex)
 		},
 		data() {
 			return {

@@ -1,0 +1,7 @@
+{
+  "name": "updateLabelList",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

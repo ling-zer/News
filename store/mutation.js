@@ -14,5 +14,9 @@ export default {
 	clearHistory(state) {
 		uni.removeStorageSync('historyList')
 		state.historyList = []
+	},
+	setLabelList(state, val) {
+		uni.setStorageSync('labelList', val);
+		state.labelList = val;
 	}
 }

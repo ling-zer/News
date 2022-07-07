@@ -13,6 +13,7 @@
 </script>
 
 <style>
+	@import url("@/components/u-parse/u-parse.css");
 	/*每个页面公共css */
 	page {
 /* 		height: initial;

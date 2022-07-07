@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "@escook/request-miniprogram": "^0.2.1"
+  },
+  "dependencies": {
+    "marked": "^4.0.17"
   }
 }

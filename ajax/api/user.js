@@ -16,3 +16,14 @@ export const checkToken = data => ajax({
 	name: "checkToken",
 	data
 })
+
+export const updateFollowAuthor = data => ajax({
+	name: "updateFollowAuthor",
+	data
+})
+
+// 点赞文章
+export const updateCompliments = data => ajax({
+	name: "updateCompliments",
+	data
+})
