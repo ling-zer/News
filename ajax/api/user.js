@@ -27,3 +27,13 @@ export const updateCompliments = data => ajax({
 	name: "updateCompliments",
 	data
 })
+
+export const getFollowArticle = data => ajax({
+	name: "getFollowArticle",
+	data
+})
+
+export const getAuthorList = data => ajax({
+	name: "getAuthorList",
+	data
+})

@@ -145,6 +145,7 @@ export default {
 				...this.userInfo,
 				author_likes_ids: followIds
 			})
+			uni.$emit('updateFollowAuthor')
 		},
 		async _updateCompliments() {
 			const {msg} = await updateCompliments({

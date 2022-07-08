@@ -1,0 +1,7 @@
+{
+  "name": "getAuthorList",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

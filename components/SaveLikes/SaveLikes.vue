@@ -33,7 +33,8 @@
 					title:msg,
 					icon:"none"
 				})
-				this.updateUserInfo({...this.userInfo, ...userInfo})
+				this.updateUserInfo({...this.userInfo, ...userInfo});
+				uni.$emit('updateFollowArticle')
 			}
 		},
 		computed: {
