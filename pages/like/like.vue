@@ -14,19 +14,21 @@
 			<swiper class="follow-list-swiper" :current="currentIndex" @change="changeCurrent">
 				<swiper-item>
 					<!-- 关注文章列表 -->
-					<view class="swiper-item">
+					<view class="swiper-item" :class="{'no-data': noArticle}">
+						{{noArticle && '暂无收藏文章'}}
 						<ListItem :articleList="articleList" :isShowLoadMore="false"></ListItem>
-						<view v-if="noArticle" class="no-data">
+						<!-- <view v-if="noArticle" class="no-data">
 							暂无收藏文章
-						</view>
+						</view> -->
 					</view>
 				</swiper-item>
 				<swiper-item>
-					<view class="swiper-item">
+					<view class="swiper-item" :class="{'no-data': noAuthor}">
+						{{noAuthor && '暂无关注作者'}}
 						<AuthorList :authorList="authorList"></AuthorList>
-						<view v-if="noAuthor" class="no-data">
-							暂无收藏文章
-						</view>
+						<!-- <view v-if="noAuthor" class="no-data">
+							暂无关注作者
+						</view> -->
 					</view>
 				</swiper-item>
 			</swiper>
@@ -41,9 +43,9 @@
 			return {
 				currentIndex: 0,
 				articleList: [],
-				noArticle: false,
+				noArticle: '',
 				authorList: [],
-				noAuthor: false
+				noAuthor: ''
 			}
 		},
 		onLoad() {
@@ -68,6 +70,8 @@
 				this.articleList = list
 				if(!list.length) {
 					this.noArticle = true
+				} else {
+					this.noArticle = ''
 				}
 			},
 			// 获取关注的作者列表
@@ -78,6 +82,8 @@
 				this.authorList = list
 				if(!list.length) {
 					this.noAuthor = true
+				} else {
+					this.noAuthor = ''
 				}
 			}
 		}

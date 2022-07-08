@@ -2,7 +2,7 @@ export default ({name, data={}}) => {
 	// 返回一个Promise对象
 	return new Promise((resolve, reject) => {
 		// 1. 打开loading弹窗
-		uni.showLoading({})
+		// uni.showLoading({})
 		// 2. 发起数据请求
 		uniCloud.callFunction({
 			name, // 云函数的名称
@@ -21,7 +21,7 @@ export default ({name, data={}}) => {
 				reject(err);
 			},
 			complete() { // 请求完成的状态
-				uni.hideLoading() // 关闭loading弹窗
+				// uni.hideLoading() // 关闭loading弹窗
 			}
 		})
 	})

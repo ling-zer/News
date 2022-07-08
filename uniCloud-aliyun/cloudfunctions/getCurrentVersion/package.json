@@ -1,0 +1,7 @@
+{
+  "name": "getCurrentVersion",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
