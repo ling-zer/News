@@ -1,61 +1,64 @@
 <template>
-	<view class="article-detail-container">
-		<view class="detail-title">
-			{{ articleData.title }}
-		</view>
-		<view class="detail-header">
-			<view class="header-left">
-				<view class="avator-container">
-					<image :src="articleData.author.avatar" mode="aspectFit"></image>
+	<view class="article-box">
+		<view class="article-detail-container" v-if="articleData">
+			<view class="detail-title">
+				{{ articleData.title }}
+			</view>
+			<view class="detail-header">
+				<view class="header-left">
+					<view class="avator-container">
+						<image :src="articleData.author.avatar" mode="aspectFit"></image>
+					</view>
+					<view class="info-container">
+						<view>{{ articleData.author.author_name }}</view>
+						<view>{{ articleData.create_time }} {{ articleData.browse_count }} 浏览 {{ articleData.thumbs_up_count }}👍
+						</view>
+					</view>
 				</view>
-				<view class="info-container">
-					<view>{{ articleData.author.author_name }}</view>
-					<view>{{ articleData.create_time }} {{ articleData.browse_count }} 浏览 {{ articleData.thumbs_up_count }}👍
+				<button class="header-right" @click="_followAuthor">
+					{{isFollowAuthor? '取消关注' : '关注'}}
+				</button>
+			</view>
+			<view class="detail-content">
+				<view class="detail-html">
+					<u-parse :content="content"></u-parse>
+				</view>
+				
+				<!-- 评论内容部分 -->
+				<view class="detail-comment">
+					<view class="comment-title">
+						最新评论
+					</view>
+					<view class="comment-content-container" v-for="item in commentList" :key="item.comment_id">
+						<CommentBox :commentData="item" @commentReply="commentReply"></CommentBox>
+					</view>
+					<view class="no-data" v-if="!commentList.length">
+						暂无评论
 					</view>
 				</view>
 			</view>
-			<button class="header-right" @click="_followAuthor">
-				{{isFollowAuthor? '取消关注' : '关注'}}
-			</button>
+			<view class="detail-footer">
+				<view class="input-container" @click="openMasker">
+					<text>探讨那你的看法</text>
+					<uni-icons type="compose" size="16" color="#f07373"></uni-icons>
+				</view>
+				<view class="detail-icons">
+					<view class="detail-icon-box" @click="goCommentPage">
+						<uni-icons type="chat" size="22" color="#f07373"></uni-icons>
+					</view>
+					<SaveLikes :articleId="articleData._id" :size="'22'" class="detail-icon-box"></SaveLikes>
+					<!-- <view class="detail-icon-box">
+						<uni-icons type="heart" size="22" color="#f07373"></uni-icons>
+					</view> -->
+					<view class="detail-icon-box">
+						<uni-icons @click="_updateCompliments" :type="isCompliments ? 'hand-up-filled':'hand-up'" size="22" color="#f07373"></uni-icons>
+					</view>
+				</view>
+			</view>
+			<CommentMasker :showPopup="showPopup" @closeMasker="showPopup=$event" @sendCommentVal="sendCommentVal"></CommentMasker>
 		</view>
-		<view class="detail-content">
-			<view class="detail-html">
-				<u-parse :content="content"></u-parse>
-			</view>
-			
-			<!-- 评论内容部分 -->
-			<view class="detail-comment">
-				<view class="comment-title">
-					最新评论
-				</view>
-				<view class="comment-content-container" v-for="item in commentList" :key="item.comment_id">
-					<CommentBox :commentData="item" @commentReply="commentReply"></CommentBox>
-				</view>
-				<view class="no-data" v-if="!commentList.length">
-					暂无评论
-				</view>
-			</view>
-		</view>
-		<view class="detail-footer">
-			<view class="input-container" @click="openMasker">
-				<text>探讨那你的看法</text>
-				<uni-icons type="compose" size="16" color="#f07373"></uni-icons>
-			</view>
-			<view class="detail-icons">
-				<view class="detail-icon-box" @click="goCommentPage">
-					<uni-icons type="chat" size="22" color="#f07373"></uni-icons>
-				</view>
-				<SaveLikes :articleId="articleData._id" :size="'22'" class="detail-icon-box"></SaveLikes>
-				<!-- <view class="detail-icon-box">
-					<uni-icons type="heart" size="22" color="#f07373"></uni-icons>
-				</view> -->
-				<view class="detail-icon-box">
-					<uni-icons @click="_updateCompliments" :type="isCompliments ? 'hand-up-filled':'hand-up'" size="22" color="#f07373"></uni-icons>
-				</view>
-			</view>
-		</view>
-		<CommentMasker :showPopup="showPopup" @closeMasker="showPopup=$event" @sendCommentVal="sendCommentVal"></CommentMasker>
 	</view>
+	
 </template>
 
 <script>

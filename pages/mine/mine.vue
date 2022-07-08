@@ -34,7 +34,7 @@
 				</view>
 				<uni-icons type="arrowright" size="14" color="#666"></uni-icons>
 			</view>
-			<view class="my-content-list">
+			<view class="my-content-list" @click="goMyArticle">
 				<view class="my-content-item">
 					<uni-icons class="icons" type="contact" size="16" color="#666"></uni-icons>
 					<text>我的文章</text>
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-	
+	import {getCurrentVersion} from '@/ajax/api/common.js'
 	export default {
 		data() {
 			return {
@@ -106,6 +106,12 @@
 			goLogin() {
 				uni.navigateTo({
 					url:'/pages/userInfo/login/login'
+				})
+			},
+			// 点击跳转我的文章
+			goMyArticle() {
+				uni.navigateTo({
+					url:'/pages/myArticle/myArticle'
 				})
 			},
 			// 检查当前应用版本

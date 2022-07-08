@@ -69,6 +69,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/myArticle/myArticle",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的文章",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

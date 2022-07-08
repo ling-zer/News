@@ -37,3 +37,9 @@ export const getAuthorList = data => ajax({
 	name: "getAuthorList",
 	data
 })
+
+// 获取用户发布的文章
+export const getMyArticle = data => ajax({
+	name: "getMyArticle",
+	data
+})
